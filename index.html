@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hackspace</title>
+  <meta name="description" content="Hackspace is launching soon. Stay tuned." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #1a1a1a;
+      --muted: #6b7280;
+      --accent1: #007bff;
+      --accent2: #00c896;
+      --border: #e5e7eb;
+      --gradient: linear-gradient(135deg, var(--accent1), var(--accent2));
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 24px;
+      overflow-x: hidden;
+    }
+
+    .container {
+      text-align: center;
+      max-width: 800px;
+      width: 100%;
+      animation: fadeIn 1.2s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Logo */
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .logo-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--gradient);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #fff;
+      font-size: 22px;
+      box-shadow: 0 8px 20px rgba(0, 123, 255, 0.25);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    .logo-text {
+      font-size: 32px;
+      font-weight: 700;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    h1 {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    p {
+      font-size: 18px;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    /* Countdown */
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .unit {
+      background: #f9fafb;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      width: 120px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .unit:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 20px rgba(0, 123, 255, 0.25);
+    }
+
+    .num {
+      font-size: 36px;
+      font-weight: 700;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .label {
+      font-size: 12px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 6px;
+      letter-spacing: 1px;
+    }
+
+    /* CTA button */
+    .cta {
+      display: inline-block;
+      padding: 14px 28px;
+      background: var(--gradient);
+      color: #fff;
+      border-radius: 8px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 18px rgba(0, 123, 255, 0.25);
+    }
+
+    .cta:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 24px rgba(0, 123, 255, 0.35);
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* Subtle animated background */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 20% 20%, rgba(0, 123, 255, 0.08), transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(0, 200, 150, 0.08), transparent 40%);
+      animation: bgMove 12s infinite alternate;
+      z-index: -1;
+    }
+
+    @keyframes bgMove {
+      from {
+        transform: translate(0, 0);
+      }
+
+      to {
+        transform: translate(30px, -30px);
+      }
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 36px;
+      }
+
+      .unit {
+        width: 45%;
+        margin-bottom: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container" id="app" data-target="2025-12-31T23:59:59+05:30">
+    <div class="logo">
+      <div class="logo-icon">H</div>
+      <div class="logo-text">Hackspace</div>
+    </div>
+    <h1>We’re Launching Soon</h1>
+    <p>Stay tuned for the future of tech workflows.</p>
+
+    <div class="countdown">
+      <div class="unit">
+        <div class="num" id="days">0</div>
+        <div class="label">Days</div>
+      </div>
+      <div class="unit">
+        <div class="num" id="hours">0</div>
+        <div class="label">Hours</div>
+      </div>
+      <div class="unit">
+        <div class="num" id="mins">0</div>
+        <div class="label">Minutes</div>
+      </div>
+      <div class="unit">
+        <div class="num" id="secs">0</div>
+        <div class="label">Seconds</div>
+      </div>
+    </div>
+
+    <a href="#" class="cta">Keep Smiling :)</a>
+
+    <footer>© <span id="year"></span> Hackspace. All rights reserved.</footer>
+  </div>
+
+  <script>
+    (function () {
+      const $ = (id) => document.getElementById(id);
+      const app = document.getElementById('app');
+      const target = new Date(app.dataset.target);
+
+      function updateCountdown() {
+        const now = new Date();
+        const diff = target - now;
+        if (diff <= 0) {
+          $('days').textContent = '0';
+          $('hours').textContent = '0';
+          $('mins').textContent = '0';
+          $('secs').textContent = '0';
+          return;
+        }
+        const s = Math.floor(diff / 1000);
+        const d = Math.floor(s / 86400);
+        const h = Math.floor((s % 86400) / 3600);
+        const m = Math.floor((s % 3600) / 60);
+        const sec = s % 60;
+        $('days').textContent = d;
+        $('hours').textContent = h;
+        $('mins').textContent = m;
+        $('secs').textContent = sec;
+      }
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+
+      document.getElementById('year').textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+
+</html>
